@@ -1,0 +1,45 @@
+<header class="hero-unit" id="banner">
+  <div class="container">
+    <h1>Rentr</h1>
+    <p class="lead">Rent management done right</p>
+  </div>
+</header>
+<div class="container">
+  <div class="row" ng-if="!isLoggedIn">
+    <div class="col-sm-6">
+        <h1 class="page-header">For Tenants</h1>
+          <p>Easy to pay</p>
+          <p>Move in/out perks</p>
+          <p>Quickly find your next pad</p>
+          <a href=""></a>
+    </div>
+    <div class="col-sm-6">
+        <h1 class="page-header">For Landlords</h1>
+          <p>All documents in one place</p>
+          <p>Send cleaning/repair crew with one cpck</p>
+          <p>Easy conflict resolution</p>
+    </div>
+  </div>
+  <div class="row" ng-if="isLoggedIn">
+    <div class="col-sm-12">
+        <h1 class="page-header">Hello {{ userInfo.name }}</h1>
+        <ul class="row" ng-repeat="tenancy in tenancies">
+          <li>
+            <span class="col-sm-2">{{ formatDate(tenancy.startDate) }} / {{ formatDate(tenancy.endDate) }} </span>
+            <span class="col-sm-9"><a ui-sref="place({placeId:tenancy.place.id})">{{tenancy.place.name}}</a></span>
+            <span class="col-sm-1"><a ui-sref="tenancy({tenancyId:tenancy._id})">Details</a></span>
+          </li>
+        </ul>
+    </div>
+  </div>
+</div>
+<!--<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Features:</h1>
+      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in $ctrl.awesomeThings">
+        <li><a href="#" uib-tooltip="{{thing.info}}">{{thing.name}}</a></li>
+      </ul>
+    </div>
+  </div>
+</div>-->
